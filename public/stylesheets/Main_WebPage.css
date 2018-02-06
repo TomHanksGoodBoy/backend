@@ -1,0 +1,81 @@
+ .main{
+        
+    position: fixed;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+        
+    }
+    
+    .textDiv {
+
+        width : 37%;
+        height: 80%;
+
+    }
+    
+    .logo {
+        
+        margin : 28% 60% 10% 20%;
+        
+        height : 32%;
+        width : 100%;
+    }
+    
+    .subHeading {
+        
+        color : whitesmoke;
+        font-family: 'Alegreya Sans', sans-serif;
+        font-size: 150%;
+        
+        margin : 0% -30% 0% 20%;
+    }
+    
+    .userChoose {
+        
+        margin: -25% -10% 0% 50%;
+        
+    }
+    
+    .choiceButton {
+
+        color: whitesmoke;
+        font-family: 'Alegreya Sans', sans-serif;
+        font-size: 180%;
+        background-color: #4b8e4c;
+        border: none;
+        padding: 3% 8%;
+        text-align: center!important;
+        margin: -3% 10% 8% 28%;
+        width : 30% auto;
+        height: 13% auto;
+        opacity: 1;
+        
+        border-radius: 10px !important;
+        transition: transform .2s; /* Animation */
+        
+        cursor:pointer;
+            
+    }
+    
+    .heading {
+       
+        color: whitesmoke;
+        font-family: 'Alegreya Sans', sans-serif;
+        font-size: 250%;
+        margin: -5% 10% 10% 26%;
+        
+    }
+    
+
+    button:focus {
+        
+        outline: 0!important;
+    }
+    
+    .choiceButton:hover {
+        
+        transform: scale(1.09);
+    }   
+    

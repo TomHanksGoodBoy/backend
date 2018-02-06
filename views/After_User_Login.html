@@ -1,0 +1,84 @@
+<head> 
+    
+    <title> Welcome - User </title>
+
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Fira+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="After_User_Login.css">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+</head>
+
+
+<html>
+<body style="background-image: url(After_User_Login.jpg)">
+    <header class = "header">
+         
+        <div>
+            
+            <a href = "#">               
+                <img class = "img-responsive logo dropdown" src="MedRep1.png" alt="Logo">
+            </a>           
+
+            <a href = "#">
+                <button class="logout" type="submit">Logout</button>
+            </a>
+            
+            <img class = "userLogo" src = "userIcon.png">
+            
+            <div style =" float: right; margin: 4% 3% 0% 0%" class="popup" onclick="myFunction()">
+                <h1 class="headerName">Anudish Jain</h1>
+                <span class="popuptext" id="myPopup">
+                Aadhaar Number : 123456789110<br>
+                Mobile Number : 999999999<br>
+                Email : anudish@yahoo.com<br>
+                Number of Reports in Account : 50<br>
+                </span>
+            </div>
+                                    
+        </div>
+            
+    </header>
+    
+    <hr>
+<!---------------------------------------------------------------------------------------------------------------->
+    <div align = "center">
+    <h1 class="reportName" style= "margin-top: 5%; font-size: 250%;"> Medical History </h1>
+    </div>
+    
+    <div style = "margin-top: 5%; width: 100%" align = "center">
+        
+        <table align = "center" style="width: 75%">
+
+            <tr>
+                <td><h1 class="reportName">Malaria Report (01-12-2014)</h1></td>
+                <td><a href = "#" download><img src="Download_Report.png"></a></td>
+            </tr>
+            <tr>
+                <td><h1 class="reportName">Blood Test Report (24-7-2016)</h1></td>
+                <td><a href = "#" download><img src="Download_Report.png"></a></td>
+            </tr>
+            <tr>
+                <td><h1 class="reportName">Dengue Report (2-02-2018)</h1></td>
+                <td><a href = "#" download><img src="Download_Report.png"></a></td>
+            </tr>
+            <tr>
+                          
+        </table>           
+            
+            
+    </div>
+            
+
+</body>
+</html>
+
+
+
+<script>
+// When the user clicks on <div>, open the popup
+function myFunction() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}
+</script>

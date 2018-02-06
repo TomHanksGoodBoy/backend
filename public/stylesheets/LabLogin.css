@@ -1,0 +1,225 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 2.5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+.takeInputUser {
+        
+        width: 75% !important;
+        padding: 15px !important;
+        margin: 5px 0px 22px 0px !important;
+        display: inline-block !important;
+        border: none !important;
+        border-bottom: 10% !important;
+        background: none !important;
+}
+
+.container {
+    font-size:0;
+   
+    display:table;
+}
+    
+.container>div {
+    display:table-cell;
+    width:50%;
+    font-size:12px;
+    height:inherit;
+}
+
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
+}
+    
+    
+/* ANUDISH CODE STARTS BELOW */    
+
+    .main{
+        
+    position: fixed;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+        
+    }
+    
+    .textDiv {
+
+        width : 37%;
+        height: 80%;
+
+    }
+    
+    .logo {
+        
+        margin : 28% 60% 10% 20%;
+        
+        height : 32%;
+        width : 100%;
+    }
+    
+    .subHeading {
+        
+        color : whitesmoke;
+        font-family: 'Alegreya Sans', sans-serif;
+        font-size: 150%;
+        
+        margin : 0% -30% 0% 20%;
+    }
+    
+    .login {
+
+        height: 100%;
+        width: 30%;
+        margin: -22% 0% 0% 63%;
+        
+        animation-duration: 2.0s;
+        animation-name: slideIn;
+ 
+    }
+    
+    .inputText
+    {
+        width: 85% !important;
+        height: 7% !important;
+        
+        font-family: 'Alegreya Sans', sans-serif !important;
+        font-size: 180% !important;
+        color: whitesmoke !important;
+        
+        background: none !important;
+        border-width: 0 !important;
+        border-bottom-width: medium !important;
+        border-color: #57d190 !important;        
+                
+    }
+    
+    input:focus{
+        
+        outline: none !important;
+    }
+    
+    .buttonDesign{
+        
+        margin: 7% 0% 0% 0%;
+        text-align: center;
+        width: 80%;
+        height: 5%;
+        
+        background : none;
+        font-family: 'Alegreya Sans', sans-serif;
+        font-size: 200%;
+        color: whitesmoke;
+        
+        border: none;
+        border-radius: 5%;
+        
+        cursor:pointer;
+        
+        transition: transform .2s; /* Animation */
+    }
+    
+    button:focus{
+        
+        outline: none;
+    }
+    
+    .buttonDesign:hover {
+        
+        transform: scale(1.5);
+    } 
+    
+    @keyframes slideIn {
+        
+        from {
+            
+            margin-left: 100%;
+        }
+        
+        to {
+            
+            margin-left: 63%;
+        }
+    }
+
+    
+    

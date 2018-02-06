@@ -1,0 +1,23 @@
+
+<html>
+<body>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form method="post" action="/users/signup">
+            <input type="text" class= "takeInputUser" placeholder="Name" name="name" maxlength="10" size="10" required>
+            <input type="text" class="takeInputUser" placeholder="Aadhaar Card Number" name="aadhaar" maxlength="12" size="10" required>
+            <input type="text"  class="takeInputUser" placeholder="Mobile Number " name="mobile" maxlength="10" size="10" required>
+            <input type="text"  class="takeInputUser" placeholder="Email Address" name="email" maxlength="50" size="10" required>
+            <input type="text"  class="takeInputUser" placeholder="Blood Group" name="bloodGrp" maxlength="5" size="10" required>
+            <input type="text"  class="takeInputUser" placeholder="Password" name="password" maxlength="30" size="10" required>
+
+            <div class="clearfix">
+                <button type="reset" class="cancelbtn">Reset</button>
+                <button type="submit" class="signupbtn">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
