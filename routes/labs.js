@@ -7,12 +7,12 @@ router.get('/login', function(req, res, next) {
     res.render('labs');
 });
 
-router.get('/signup', function(req, res, next) {
-    res.render('signup');
+router.get('/signuplab', function(req, res, next) {
+    res.render('signuplab');
 });
 
 //POST route for registering
-router.post('/signup', function (req, res, next) {
+router.post('/signuplab', function (req, res, next) {
 
     if (req.body.name &&
         req.body.license &&
@@ -28,7 +28,7 @@ router.post('/signup', function (req, res, next) {
             mobile: req.body.mobile,
         }
 
-        lab.create(labData, function (error, lab) {
+        Lab.create(labData, function (error, lab) {
             if (error) {
                 return next(error);
             } else {
@@ -49,7 +49,7 @@ router.post('/login', function (req, res, next) {
     if (req.body.loglabname && req.body.logpassword) {
         Lab.authenticate(req.body.loglabname, req.body.logpassword, function (error, lab) {
             if (error || !lab) {
-                var err = new Error('Wrong email or password.');
+                var err = new Error('Wrong userid or password.');
                 err.status = 401;
                 return next(err);
             } else {
@@ -66,7 +66,7 @@ router.post('/login', function (req, res, next) {
 
 // GET route after registering
 router.get('/profile', function (req, res, next) {
-    lab.findById(req.session.labId)
+    Lab.findById(req.session.labId)
         .exec(function (error, lab) {
             if (error) {
                 return next(error);
@@ -76,7 +76,7 @@ router.get('/profile', function (req, res, next) {
                     err.status = 400;
                     return next(err);
                 } else {
-                    return res.send('<h1>Name: </h1>' + lab.name + '<h2>License: </h2>' + lab.license + '<br><a type="button" href="/logout">Logout</a>')
+                    return res.send('<h1>Name: </h1>' + lab.name + '<h2>License: </h2>' + lab.license + '<br><a type="button" href="/labs/login">Logout</a>')
                 }
             }
         });
@@ -90,7 +90,7 @@ router.get('/logout', function (req, res, next) {
             if (err) {
                 return next(err);
             } else {
-                return res.redirect('/labs/profile');
+                return res.redirect('/labs/login');
             }
         });
     }

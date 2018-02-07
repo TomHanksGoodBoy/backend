@@ -10,7 +10,6 @@ var LabSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        unique: true,
         required: true,
         trim: true
     },
@@ -20,10 +19,12 @@ var LabSchema = new mongoose.Schema({
     },
     license: {
         type: String,
+        unique: true,
         required: true,
     },
     mobile: {
       type: String,
+      unique: true,
       required: true,
     }
 });

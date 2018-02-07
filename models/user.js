@@ -10,7 +10,6 @@ var UserSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        unique: true,
         required: true,
         trim: true
     },
@@ -20,14 +19,16 @@ var UserSchema = new mongoose.Schema({
     },
     aadhaar: {
         type: String,
+        unique: true,
         required: true,
     },
     bloodGrp: {
       type: String,
-      required: true,
+      required: false,
     },
     mobile: {
       type: String,
+      unique: true,
       required: true,
     }
 });

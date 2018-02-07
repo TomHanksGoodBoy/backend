@@ -18,7 +18,6 @@ router.post('/signup', function (req, res, next) {
         req.body.aadhaar &&
         req.body.password &&
         req.body.email &&
-        req.body.bloodGrp &&
         req.body.mobile) {
 
         var userData = {
@@ -78,7 +77,7 @@ router.get('/profile', function (req, res, next) {
                     err.status = 400;
                     return next(err);
                 } else {
-                    return res.send('<h1>Name: </h1>' + user.name + '<h2>Mail: </h2>' + user.aadhaar + '<br><a type="button" href="/logout">Logout</a>')
+                    return res.send('<h1>Name: </h1>' + user.name + '<h2>Mail: </h2>' + user.aadhaar + '<br><a type="button" href="/users/login">Logout</a>')
                 }
             }
         });
@@ -92,7 +91,7 @@ router.get('/logout', function (req, res, next) {
             if (err) {
                 return next(err);
             } else {
-                return res.redirect('/users/profile');
+                return res.redirect('/users/login');
             }
         });
     }
