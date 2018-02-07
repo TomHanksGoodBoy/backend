@@ -76,7 +76,8 @@ router.get('/profile', function (req, res, next) {
                     err.status = 400;
                     return next(err);
                 } else {
-                    return res.send('<h1>Name: </h1>' + lab.name + '<h2>License: </h2>' + lab.license + '<br><a type="button" href="/labs/login">Logout</a>')
+                    res.render('After_Lab_Login');
+                    //return res.send('<h1>Name: </h1>' + lab.name + '<h2>License: </h2>' + lab.license + '<br><a type="button" href="/labs/login">Logout</a>')
                 }
             }
         });
