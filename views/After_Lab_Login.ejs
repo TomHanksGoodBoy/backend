@@ -19,9 +19,9 @@
                 <img class = "logo" src = "../images/MedRep1.png" align = "middle" alt = "Logo Here">
             </a>
 
-            <form>
+            <form action "/labs/After_Lab_Login" method="POST" enctype="multipart/form-data" >
 
-                <input class="inputText" type = "text" placeholder = "Aadhaar Number (Consumer)" required onkeydown="return ( event.ctrlKey || event.altKey
+                <input name = "uploaded_aadhaar_file" class="inputText" type = "text" placeholder = "Aadhaar Number (Consumer)" required onkeydown="return ( event.ctrlKey || event.altKey
                     || (47<event.keyCode && event.keyCode<58 && event.shiftKey==false)
                     || (95<event.keyCode && event.keyCode<106)
                     || (event.keyCode==8) || (event.keyCode==9)
@@ -29,7 +29,7 @@
                     || (event.keyCode==46) )" pattern=".{12,12}">
 
                 <div align = "center">
-                <input class="inputText" style = "font-size: 125%" type = "text" placeholder = "Report Name with Date (DD-MM-YY) " required>
+                <input name = "reportName" class="inputText" style = "font-size: 125%" type = "text" placeholder = "Report Name with Date (DD-MM-YY) " required>
                 </div>
 
                 <div align = "center">
@@ -38,7 +38,7 @@
                 </div>
 
                 <div align = "center">
-                <button type = "submit" class="buttonDesign"> Upload to Server </button>
+                <button type = "submit" name = "submit" value = "submit" class="buttonDesign"> Upload to Server </button>
                 </div>
 
 

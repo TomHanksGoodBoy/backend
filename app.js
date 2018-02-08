@@ -11,6 +11,9 @@ var MongoStore = require('connect-mongo')(session);
 var index = require('./routes/index');
 var users = require('./routes/users');
 var labs = require('./routes/labs');
+//var After_Lab_Login = require('./routes/After_Lab_Login');
+//var imagefile = require('./routes/imagefile');
+//var After_User_Login = require('./routes/After_User_Login');
 //var signup = require('./routes/signup');
 
 var app = express();
@@ -52,6 +55,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/labs',labs);
+//app.use('/After_Lab_Login',After_Lab_Login);
+//app.use('/images',imagefile);
+//app.use('/After_User_Login',After_User_Login);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

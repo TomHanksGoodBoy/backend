@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var routes = require('./imagefile');
 
 /* GET user login page. */
 router.get('/login', function(req, res, next) {
@@ -34,7 +35,7 @@ router.post('/signup', function (req, res, next) {
                 return next(error);
             } else {
                 req.session.userId = user._id;
-                return res.redirect('/users/profile');
+                return res.redirect('/users/After_User_Login');
             }
         });
 
@@ -55,7 +56,7 @@ router.post('/login', function (req, res, next) {
                 return next(err);
             } else {
                 req.session.userId = user._id;
-                return res.redirect('/users/profile');
+                return res.redirect('/users/After_User_Login');
             }
         });
     } else {
@@ -66,7 +67,7 @@ router.post('/login', function (req, res, next) {
 });
 
 // GET route after registering
-router.get('/profile', function (req, res, next) {
+router.get('/After_User_Login', function (req, res, next) {
     User.findById(req.session.userId)
         .exec(function (error, user) {
             if (error) {
@@ -78,7 +79,8 @@ router.get('/profile', function (req, res, next) {
                     return next(err);
                 } else {
                     res.render('After_User_Login');
-                    //return res.send('<h1>Name: </h1>' + user.name + '<h2>Mail: </h2>' + user.aadhaar + '<br><a type="button" href="/users/login">Logout</a>')
+                    console.log('session user id' + req.session.userId);
+                    console.log(req.session);
                 }
             }
         });
@@ -86,16 +88,41 @@ router.get('/profile', function (req, res, next) {
 
 // GET for logout
 router.get('/logout', function (req, res, next) {
-    if (req.session) {
         // delete session object
-        req.session.destroy(function (err) {
-            if (err) {
-                return next(err);
-            } else {
-                return res.redirect('/');
-            }
+        // console.log(req.session);
+        req.session.destroy(function() {
+
+                res.redirect('/users/login');
+
         });
-    }
+
+});
+
+
+//URL : http://localhost:3000/images/
+// To get all the images/files stored in MongoDB
+router.get('/After_User_Login/images', function(req, res) {
+//calling the function from index.js class using routes object..
+routes.getImages(function(err, genres) {
+    if (err) {
+    throw err;
+  }
+    res.json(genres);
+  });
+});
+
+// URL : http://localhost:3000/images/(give you collectionID)
+// To get the single image/File using id from the MongoDB
+router.get('/After_User_Login/images/:id', function(req, res) {
+
+//calling the function from index.js class using routes object..
+routes.getImageById(req.params.id, function(err, genres) {
+    if (err) {
+    throw err;
+  }
+    res.download(genres.path);
+    //res.send(genres.path)
+  });
 });
 
 module.exports = router;

@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var Lab = require('../models/lab');
+var multer = require('multer');
+var mongoose = require('mongoose');
+var routes = require('./imagefile');
+//var routes = require('./imagefile');
 
 /* GET lab login page. */
 router.get('/login', function(req, res, next) {
@@ -33,7 +37,7 @@ router.post('/signuplab', function (req, res, next) {
                 return next(error);
             } else {
                 req.session.labId = lab._id;
-                return res.redirect('/labs/profile');
+                return res.redirect('/labs/After_Lab_Login');
             }
         });
 
@@ -54,7 +58,7 @@ router.post('/login', function (req, res, next) {
                 return next(err);
             } else {
                 req.session.labId = lab._id;
-                return res.redirect('/labs/profile');
+                return res.redirect('/labs/After_Lab_Login');
             }
         });
     } else {
@@ -65,7 +69,7 @@ router.post('/login', function (req, res, next) {
 });
 
 // GET route after registering
-router.get('/profile', function (req, res, next) {
+router.get('/After_Lab_Login', function (req, res, next) {
     Lab.findById(req.session.labId)
         .exec(function (error, lab) {
             if (error) {
@@ -77,7 +81,6 @@ router.get('/profile', function (req, res, next) {
                     return next(err);
                 } else {
                     res.render('After_Lab_Login');
-                    //return res.send('<h1>Name: </h1>' + lab.name + '<h2>License: </h2>' + lab.license + '<br><a type="button" href="/labs/login">Logout</a>')
                 }
             }
         });
@@ -97,4 +100,45 @@ router.get('/logout', function (req, res, next) {
     }
 });
 
+//------------------------------------------------------------------------------------
+
+
+// To get more info about 'multer'.. you can go through https://www.npmjs.com/package/multer..
+var storage = multer.diskStorage({
+ destination: function(req, file, cb) {
+ cb(null, 'uploads/')
+ },
+ filename: function(req, file, cb) {
+ cb(null, file.originalname);
+ }
+});
+
+var upload = multer({
+ storage: storage
+});
+
+
+
+router.post('/After_Lab_Login', upload.any(), function(req, res, next) {
+
+ //res.send(req.files);
+
+//req.files has the information regarding the file you are uploading...
+//from the total information, i am just using the path and the imageName to store in the mongo collection(table)
+
+ var path = req.files[0].path;
+ var imageName = req.files[0].originalname;
+ var uploaded_aadhaar_file = req.body.uploaded_aadhaar_file;
+ var newName = req.body.reportName;
+ var imagepath = {};
+ imagepath['path'] = path;
+ imagepath['originalname'] = newName;
+ imagepath['aadhaar'] = uploaded_aadhaar_file;
+ //imagepath contains two objects, path and the imageName
+
+ //we are passing two objects in the addImage method.. which is defined above..
+ routes.addImage(imagepath, function(err) {
+
+ })
+});
 module.exports = router;
