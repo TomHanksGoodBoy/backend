@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var routes = require('./imagefile');
+var Image = require('../models/files');
+var mongoose = require('mongoose');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 /* GET user login page. */
 router.get('/login', function(req, res, next) {
@@ -78,13 +82,43 @@ router.get('/After_User_Login', function (req, res, next) {
                     err.status = 400;
                     return next(err);
                 } else {
-                    res.render('After_User_Login');
-                    console.log('session user id' + req.session.userId);
-                    console.log(req.session);
+                  // var count1 = 0;
+                   Image.find({ aadhaar: user.aadhaar }, function (err, image) {
+                   if (err) return handleError(err);
+                   console.log(image);
+                  //console.log(Image.originalname);
+                  // Image.count({ aadhaar: user.aadhaar }, function (err, count) {
+                  //   if (err) return handleError(err);
+                  //   count1 = count;
+                  // });
+                    res.render('After_User_Login',{ name: user.name ,
+                                                    aadhaar: user.aadhaar ,
+                                                    email: user.email ,
+                                                    mobile: user.mobile,
+                                                    image: image
+                                                    });
+                 });
+
                 }
             }
         });
 });
+
+
+// function getName(callback){
+//     db.test.find({aadhaar: user.aadhaar}, function(err, objs){
+//         var returnable_name;
+//         console.log(objs.length);
+//         if (objs.length == 1)
+//         {
+//             returnable_name = objs[0].name;
+//             console.log(returnable_name); // this prints "Renato", as it should
+//             callback(returnable_name);
+//         }
+//     });
+// }
+
+
 
 // GET for logout
 router.get('/logout', function (req, res, next) {

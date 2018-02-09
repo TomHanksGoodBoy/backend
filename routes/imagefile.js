@@ -16,6 +16,10 @@ router.getImageById = function(id, callback) {
 
 }
 
+// router.getImagebyaadhaar = function(id,callback){
+//   Image.
+// }
+
 router.addImage = function(image, callback) {
  Image.create(image, callback);
 }
